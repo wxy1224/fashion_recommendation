@@ -67,7 +67,7 @@ class coco(imdb):
     prefix = 'instances' if self._image_set.find('test') == -1 \
       else 'image_info'
     return osp.join(self._data_path, 'annotations',
-                    prefix + '_' + self._image_set + self._year + '.json')
+                    coco + '_' + self._image_set + self._year + '.json')
 
   def _load_image_set_index(self):
     """
