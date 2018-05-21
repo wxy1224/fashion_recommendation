@@ -26,6 +26,7 @@ from pycocotools import mask as COCOmask
 
 class coco(imdb):
   def __init__(self, image_set, year):
+    print("Passed in {}//{}".format(image_set, year))
     imdb.__init__(self, 'coco_' + year + '_' + image_set)
     # COCO specific config options
     self.config = {'use_salt': True,

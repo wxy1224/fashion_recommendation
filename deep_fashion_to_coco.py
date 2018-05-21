@@ -27,9 +27,11 @@ if __name__=='__main__':
     images_to_annos = {}
     # put all your fashion data here img/Anno needs to be here.
     root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
+    docker_image = '/cs231_project/tf-faster-rcnn/'
     category_file_path = root_path+"Anno/list_category_img.txt"
-    json_output_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/tf-faster-rcnn/data/instances_minival2014.json'
+    json_output_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/coco_2018_fashion_train.json'
     bbox_file_path = root_path+"Anno/list_bbox.txt"
+    subsample_limit = 5 # 600000000
     with open(category_file_path, 'r') as f:
         content = f.readlines()
         content = content[2:]
@@ -40,18 +42,21 @@ if __name__=='__main__':
         bbox_content = bbox_content[2:]
         for bbox_line in bbox_content:
             pair = bbox_line.split()
-            image_path = root_path + pair[0]
+            image_path = docker_image + pair[0]
             bbox_coors =pair[1:]
             bbox_map[image_path]=convert_to_coco_bbox(bbox_coors)
 
     i = 0
     category_map = {}
     for line in content:
+        if i > subsample_limit:
+            break
         pair = line.split()
-        image_path = root_path + pair[0]
+        image_read_path = root_path + pair[0]
+        image_path = docker_image + pair[0]
         category_id = int(pair[1])
         category_map[image_path]=category_id
-        img = Image.open(image_path)
+        img = Image.open(image_read_path)
         width, height = img.size
         dic = {'file_name': image_path, 'id': i, 'height': height, 'width': width}
         images.append(dic)
@@ -60,6 +65,8 @@ if __name__=='__main__':
     ann_index = 0
 
     for image_dic in images:
+        if ann_index > subsample_limit:
+            break
         image_path = image_dic['file_name']
         bbox_coors = bbox_map[image_path]
         dic2 = {'segmentation': [], 'area': bbox_coors[2]*bbox_coors[3],

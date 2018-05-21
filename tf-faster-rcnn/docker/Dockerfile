@@ -21,6 +21,7 @@ RUN apt-get update && \
                   wget \
                   cython \
                   git \
+                  time \
                   -y
                   
 # Get required python modules
@@ -31,6 +32,7 @@ RUN pip install image \
                 PyYAML \
                 numpy \
                 easydict \
+                tensorflow \
                 tensorflow-gpu
 # Update numpy
 RUN pip install -U numpy

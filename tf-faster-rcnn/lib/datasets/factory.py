@@ -28,8 +28,8 @@ for year in ['2007', '2012']:
     __sets[name] = (lambda split=split, year=year: pascal_voc(split, year, use_diff=True))
 
 # Set up coco_2014_<split>
-for year in ['2014']:
-  for split in ['train', 'val', 'minival', 'valminusminival', 'trainval']:
+for year in ['2014', '2018']:
+  for split in ['fashion_train','train', 'val', 'minival', 'valminusminival', 'trainval']:
     name = 'coco_{}_{}'.format(year, split)
     __sets[name] = (lambda split=split, year=year: coco(split, year))
 
