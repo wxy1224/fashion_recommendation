@@ -32,8 +32,8 @@ RUN pip install image \
                 PyYAML \
                 numpy \
                 easydict \
-                tensorflow \
-                tensorflow-gpu
+                tensorflow-gpu \
+                tensorflow
 # Update numpy
 RUN pip install -U numpy
 

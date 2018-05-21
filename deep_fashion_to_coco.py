@@ -27,9 +27,9 @@ if __name__=='__main__':
     images_to_annos = {}
     # put all your fashion data here img/Anno needs to be here.
     root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
-    docker_image = '/cs231_project/tf-faster-rcnn/'
+    docker_image = '/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
     category_file_path = root_path+"Anno/list_category_img.txt"
-    json_output_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/coco_2018_fashion_train.json'
+    json_output_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
     bbox_file_path = root_path+"Anno/list_bbox.txt"
     subsample_limit = 5 # 600000000
     with open(category_file_path, 'r') as f:
@@ -58,7 +58,7 @@ if __name__=='__main__':
         category_map[image_path]=category_id
         img = Image.open(image_read_path)
         width, height = img.size
-        dic = {'file_name': image_path, 'id': i, 'height': height, 'width': width}
+        dic = {'file_name': pair[0], 'id': image_path, 'height': height, 'width': width}
         images.append(dic)
         i += 1
 
@@ -67,7 +67,7 @@ if __name__=='__main__':
     for image_dic in images:
         if ann_index > subsample_limit:
             break
-        image_path = image_dic['file_name']
+        image_path = image_dic['id']
         bbox_coors = bbox_map[image_path]
         dic2 = {'segmentation': [], 'area': bbox_coors[2]*bbox_coors[3],
                 'iscrowd': 0, 'image_id': image_dic['id'], 'bbox': bbox_coors,
