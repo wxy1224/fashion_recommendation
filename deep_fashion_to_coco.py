@@ -27,7 +27,7 @@ if __name__=='__main__':
     images_to_annos = {}
     # put all your fashion data here img/Anno needs to be here.
     root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
-    docker_image = '/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
+    docker_image = root_path #'/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
     category_file_path = root_path+"Anno/list_category_img.txt"
     json_output_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
     bbox_file_path = root_path+"Anno/list_bbox.txt"
