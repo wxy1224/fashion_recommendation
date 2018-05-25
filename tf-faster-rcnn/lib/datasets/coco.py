@@ -127,6 +127,7 @@ class coco(imdb):
     handled by marking their overlaps (with all categories) to -1. This
     overlap value means that crowd "instances" are excluded from training.
     """
+    print("@@@@@@@@@@@@", index)
     im_ann = self._COCO.loadImgs(index)[0]
     width = im_ann['width']
     height = im_ann['height']

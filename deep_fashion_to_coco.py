@@ -26,12 +26,20 @@ if __name__=='__main__':
     images, anns = [], []
     images_to_annos = {}
     # put all your fashion data here img/Anno needs to be here.
-    root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
-    docker_image = root_path #'/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
+    # root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
+    # root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
+    # docker_image = root_path #'/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
+    # root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
+    root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
+    # docker_image = '/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
+    # docker_image = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
+    docker_image = root_path
     category_file_path = root_path+"Anno/list_category_img.txt"
-    json_output_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
+    # json_output_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
+    json_output_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
     bbox_file_path = root_path+"Anno/list_bbox.txt"
     subsample_limit = 5 # 600000000
+
     with open(category_file_path, 'r') as f:
         content = f.readlines()
         content = content[2:]
