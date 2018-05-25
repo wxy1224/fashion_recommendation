@@ -26,10 +26,10 @@ if __name__=='__main__':
     images, anns = [], []
     images_to_annos = {}
     # put all your fashion data here img/Anno needs to be here.
-    # root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
+    root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
     # root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
     # docker_image = root_path #'/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
-    root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
+    # root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
     # root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
     # docker_image = '/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
     # docker_image = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
