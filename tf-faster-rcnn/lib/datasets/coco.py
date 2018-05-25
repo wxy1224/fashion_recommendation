@@ -66,6 +66,8 @@ class coco(imdb):
   def _get_ann_file(self):
     prefix = 'instances' if self._image_set.find('test') == -1 \
       else 'image_info'
+    print("lib/datasets/coco", osp.join(self._data_path, 'annotations',
+                    'instances_' + self._image_set + self._year + '.json'))
     return osp.join(self._data_path, 'annotations',
                     'instances_' + self._image_set + self._year + '.json')
 
@@ -127,8 +129,8 @@ class coco(imdb):
     handled by marking their overlaps (with all categories) to -1. This
     overlap value means that crowd "instances" are excluded from training.
     """
-    print("@@@@@@@@@@@@", index)
-    print("self._COCO.loadImgs(index)", self._COCO.loadImgs(index))
+    print("@@@@@@@@@@@@", index, self._COCO.imgs[index])
+    print("@@@@@@@@@@@@", self._COCO.loadImgs(index))
     im_ann = self._COCO.loadImgs(index)[0]
     print("im_ann", im_ann)
     width = im_ann['width']
@@ -183,11 +185,13 @@ class coco(imdb):
             'seg_areas': seg_areas}
 
   def _get_widths(self):
+    print("lib/datasets/coco get_widths", self.roidb[0])
     return [r['width'] for r in self.roidb]
 
   def append_flipped_images(self):
     num_images = self.num_images
     widths = self._get_widths()
+    print("lib/datasets/coco", widths)
     for i in range(num_images):
       boxes = self.roidb[i]['boxes'].copy()
       oldx1 = boxes[:, 0].copy()
