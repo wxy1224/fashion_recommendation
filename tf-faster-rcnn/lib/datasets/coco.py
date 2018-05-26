@@ -298,9 +298,12 @@ class coco(imdb):
                                                      coco_cat_id))
     print('Writing results json to {}'.format(res_file))
     print(results)
-    with open(res_file, 'w') as fid:
-      print("@@@@@@@@@@@@@@@dump json", res_file)
-      fid.write("hello")
+    csv_file = 'result.csv'
+    with open(csv_file, 'w') as fid:
+      writer = csv.writer(fid)
+      print("@@@@@@@@@@@@@@@dump json", csv_file)
+      for key, value in results.items():
+        writer.writerow([key, value])
       print("@@@@@@@@@@@@@@@@@finish dump", res_file)
 
 
