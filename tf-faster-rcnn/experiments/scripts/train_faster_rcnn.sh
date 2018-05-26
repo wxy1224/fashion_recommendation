@@ -82,4 +82,4 @@ if [ ! -f ${NET_FINAL}.index ]; then
   fi
 fi
 
-# ./experiments/scripts/test_faster_rcnn.sh $@
+./experiments/scripts/test_faster_rcnn.sh $@
