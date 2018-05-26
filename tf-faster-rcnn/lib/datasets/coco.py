@@ -297,6 +297,7 @@ class coco(imdb):
       results.extend(self._coco_results_one_category(all_boxes[cls_ind],
                                                      coco_cat_id))
     print('Writing results json to {}'.format(res_file))
+    print(results)
     with open(res_file, 'w') as fid:
       print("@@@@@@@@@@@@@@@dump json", res_file)
       json.dump(results, fid)
