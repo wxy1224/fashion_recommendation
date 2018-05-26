@@ -30,8 +30,8 @@ case ${DATASET} in
     RATIOS="[0.5,1,2]"
     ;;
   coco)
-    TRAIN_IMDB="coco_2018_fashion_train"
-    TEST_IMDB="coco_2018_fashion_train"
+    TRAIN_IMDB="coco_2018_fashion_test"
+    TEST_IMDB="coco_2018_fashion_test"
     STEPSIZE="[350000]"
     ITERS=110000
     ANCHORS="[4,8,16,32]"
