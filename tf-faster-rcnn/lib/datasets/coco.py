@@ -298,7 +298,10 @@ class coco(imdb):
                                                      coco_cat_id))
     print('Writing results json to {}'.format(res_file))
     with open(res_file, 'w') as fid:
+      print("@@@@@@@@@@@@@@@dump json")
       json.dump(results, fid)
+      print("@@@@@@@@@@@@@@@@@finish dump")
+
 
   def evaluate_detections(self, all_boxes, output_dir):
     res_file = osp.join(output_dir, ('detections_' +
