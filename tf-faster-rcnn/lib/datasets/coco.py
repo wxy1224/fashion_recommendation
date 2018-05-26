@@ -23,6 +23,7 @@ import uuid
 from pycocotools.coco import COCO
 from pycocotools.cocoeval import COCOeval
 from pycocotools import mask as COCOmask
+import csv
 
 class coco(imdb):
   def __init__(self, image_set, year):
@@ -297,7 +298,7 @@ class coco(imdb):
       results.extend(self._coco_results_one_category(all_boxes[cls_ind],
                                                      coco_cat_id))
     print('Writing results json to {}'.format(res_file))
-    print(results)
+#     print(results)
     csv_file = 'result.csv'
     with open(csv_file, 'w') as fid:
       writer = csv.writer(fid)
