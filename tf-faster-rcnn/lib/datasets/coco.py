@@ -300,7 +300,8 @@ class coco(imdb):
     print(results)
     with open(res_file, 'w') as fid:
       print("@@@@@@@@@@@@@@@dump json", res_file)
-      json.dump(results, fid)
+      # json.dump(results, fid)
+      fid.write(str(results))
       print("@@@@@@@@@@@@@@@@@finish dump", res_file)
 
 
