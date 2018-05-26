@@ -297,8 +297,15 @@ class coco(imdb):
       results.extend(self._coco_results_one_category(all_boxes[cls_ind],
                                                      coco_cat_id))
     print('Writing results json to {}'.format(res_file))
-    with open(res_file, 'w') as fid:
-      json.dump(results, fid)
+    print(results)
+    csv_file = 'result.csv'
+    with open(csv_file, 'w') as fid:
+      writer = csv.writer(fid)
+      print("@@@@@@@@@@@@@@@dump json", csv_file)
+      for key, value in results.items():
+        writer.writerow([key, value])
+      print("@@@@@@@@@@@@@@@@@finish dump", res_file)
+
 
   def evaluate_detections(self, all_boxes, output_dir):
     res_file = osp.join(output_dir, ('detections_' +
