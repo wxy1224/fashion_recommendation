@@ -299,14 +299,11 @@ class coco(imdb):
                                                      coco_cat_id))
     print('Writing results json to {}'.format(res_file))
 #     print(results)
-    csv_file = 'result.csv'
+    csv_file = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/output/vgg16/coco_2018_fashion_test/default/vgg16_faster_rcnn_iter_10/result.csv'
     with open(csv_file, 'w') as fid:
       writer = csv.writer(fid)
-      print("@@@@@@@@@@@@@@@dump json", csv_file)
       for item in results:
         writer.writerow(item)
-      print("@@@@@@@@@@@@@@@@@finish dump", res_file)
-
 
   def evaluate_detections(self, all_boxes, output_dir):
     res_file = osp.join(output_dir, ('detections_' +
