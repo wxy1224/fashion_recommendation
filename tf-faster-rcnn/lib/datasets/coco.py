@@ -298,9 +298,9 @@ class coco(imdb):
                                                      coco_cat_id))
     print('Writing results json to {}'.format(res_file))
     with open(res_file, 'w') as fid:
-      print("@@@@@@@@@@@@@@@dump json")
+      print("@@@@@@@@@@@@@@@dump json", res_file)
       json.dump(results, fid)
-      print("@@@@@@@@@@@@@@@@@finish dump")
+      print("@@@@@@@@@@@@@@@@@finish dump", res_file)
 
 
   def evaluate_detections(self, all_boxes, output_dir):
