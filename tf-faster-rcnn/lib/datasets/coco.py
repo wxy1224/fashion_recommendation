@@ -303,8 +303,8 @@ class coco(imdb):
     with open(csv_file, 'w') as fid:
       writer = csv.writer(fid)
       print("@@@@@@@@@@@@@@@dump json", csv_file)
-      for key, value in results.items():
-        writer.writerow([key, value])
+      for item in results:
+        writer.writerow(item)
       print("@@@@@@@@@@@@@@@@@finish dump", res_file)
 
 
