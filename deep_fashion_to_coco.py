@@ -1,7 +1,26 @@
-
-
 from PIL import Image
 import json
+import os
+import pandas as pd
+import numpy as np
+
+def prepare_category_dict(is_training=True):
+    if is_training:
+        training_csv_path = os.path.join(root_path, 'train_modified.csv')
+    else:
+        training_csv_path = os.path.join(root_path, 'vali_modified.csv')
+    training_csv = pd.read_csv(training_csv_path, usecols=['image_path', 'category']).as_matrix()
+
+    training_dict = {}
+
+    for i in range(len(training_csv)):
+        key = training_csv[i, 0]
+        val = training_csv[i, 1]
+        training_dict[key] = val
+
+    return training_dict
+
+
 def convert_to_coco_bbox(coors):
     x1 = float(coors[0])
     y1 = float(coors[1])
@@ -11,7 +30,7 @@ def convert_to_coco_bbox(coors):
     H = y2 - y1
     return [x1, y1, W, H]
 
-def get_categories():
+def get_synthetic_categories():
     categories = []
     for index in range(48):
         dic = {
@@ -22,11 +41,23 @@ def get_categories():
         categories.append(dic)
     return categories
 
+def get_categories(categories):
+    complete_categories = []
+    for i in range(len(categories)):
+        dic = {
+            'id': categories[i],
+            'name': '{}'.format(i),
+            'supercategory': 'fashion'
+        }
+        complete_categories.append(dic)
+    return complete_categories
+
 if __name__=='__main__':
-    images, anns = [], []
+    images, anns, categories = [], [], []
     images_to_annos = {}
     # put all your fashion data here img/Anno needs to be here.
-    root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
+    root_path = 'tf-faster-rcnn/data/'
+    # root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
     # root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
     # docker_image = root_path #'/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
     # root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
@@ -35,10 +66,14 @@ if __name__=='__main__':
     # docker_image = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
     docker_image = root_path
     category_file_path = root_path+"Anno/list_category_img.txt"
+    json_output_path = os.path.join(root_path, 'fashion_train_complete.json')
     # json_output_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
-    json_output_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
+    # json_output_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
     bbox_file_path = root_path+"Anno/list_bbox.txt"
-    subsample_limit = 5 # 600000000
+    subsample_limit = 600000000
+
+    categorical_dict = prepare_category_dict()
+
 
     with open(category_file_path, 'r') as f:
         content = f.readlines()
@@ -66,9 +101,15 @@ if __name__=='__main__':
         category_map[image_path]=category_id
         img = Image.open(image_read_path)
         width, height = img.size
-        dic = {'file_name': pair[0], 'id': image_path, 'height': height, 'width': width}
-        images.append(dic)
-        i += 1
+
+        if pair[0] in categorical_dict:
+            dic = {'file_name': pair[0], 'id': image_path, 'height': height, 'width': width}
+            images.append(dic)
+            i += 1
+            categories.append(categorical_dict[pair[0]])
+
+        else:
+            continue
 
     ann_index = 0
 
@@ -83,7 +124,12 @@ if __name__=='__main__':
         ann_index+=1
         anns.append(dic2)
 
-    data = {'images':images, 'annotations':anns, 'categories':get_categories()}
+
+    assert len(images) == len(anns)
+    assert len(images) == len(categories)
+    print(len(images))
+
+    data = {'images':images, 'annotations':anns, 'categories':get_categories(categories)}
 
     with open(json_output_path, 'w') as outfile:
         json.dump(data, outfile)
