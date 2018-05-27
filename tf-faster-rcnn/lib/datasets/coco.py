@@ -77,6 +77,7 @@ class coco(imdb):
     Load image ids.
     """
     image_ids = self._COCO.getImgIds()
+    print("_load_image_set_index", image_ids)
     return image_ids
 
   def _get_widths(self):
