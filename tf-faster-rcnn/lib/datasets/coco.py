@@ -122,7 +122,7 @@ class coco(imdb):
                 for index in self._image_index]
 
     with open(cache_file, 'w+') as fid:
-      # pickle.dump(gt_roidb, fid, pickle.HIGHEST_PROTOCOL)
+      pickle.dump(gt_roidb, fid, pickle.HIGHEST_PROTOCOL)
     print('wrote gt roidb to {}'.format(cache_file))
     return gt_roidb
 
