@@ -66,7 +66,7 @@ if __name__=='__main__':
     # docker_image = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
     docker_image = root_path
     category_file_path = root_path+"Anno/list_category_img.txt"
-    json_output_path = os.path.join(root_path, 'fashion_train_complete.json')
+    json_output_path = os.path.join(root_path, 'instances_fashion_train_complete2018.json')
     # json_output_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
     # json_output_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
     bbox_file_path = root_path+"Anno/list_bbox.txt"
