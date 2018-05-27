@@ -29,7 +29,7 @@ import numpy as np
 
 # Set up coco_2014_<split>
 for year in ['2018']:
-  for split in ['fashion_train', 'fashion_test','fashion_train_complete', 'fashion_test_complete']:
+  for split in ['fashion_train', 'fashion_test']:
     name = 'coco_{}_{}'.format(year, split)
     __sets[name] = (lambda split=split, year=year: coco(split, year))
 
