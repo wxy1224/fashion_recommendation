@@ -82,7 +82,7 @@ class coco(imdb):
 
   def _get_widths(self):
     anns = self._COCO.loadImgs(self._image_index)
-    print("_get_width with anns: ", anns)
+    # print("_get_width with anns: ", anns)
     widths = [ann['width'] for ann in anns]
     return widths
 
@@ -132,11 +132,11 @@ class coco(imdb):
     handled by marking their overlaps (with all categories) to -1. This
     overlap value means that crowd "instances" are excluded from training.
     """
-    print("@@@@@@@@@@@@", index, self._COCO.imgs[index])
+    # print("@@@@@@@@@@@@", index, self._COCO.imgs[index])
     # print("@@@@@@@@@@@@", self._COCO.loadImgs(index))
     im_ann = self._COCO.imgs[index]
     #self._COCO.loadImgs(index)[0]
-    print("im_ann", im_ann)
+    # print("im_ann", im_ann)
     width = im_ann['width']
     height = im_ann['height']
 
