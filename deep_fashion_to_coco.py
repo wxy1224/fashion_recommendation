@@ -106,7 +106,7 @@ def dump_annotation_file(IS_TRAINING=True):
         pair = line.split()
         image_read_path = root_path + pair[0]
         image_path = docker_image + pair[0]
-        category_id = int(pair[1])
+        category_id = categorical_dict[pair[0]]
         category_map[image_path]=category_id
         
         img = Image.open(image_read_path)
@@ -144,7 +144,7 @@ def dump_annotation_file(IS_TRAINING=True):
         json.dump(data, outfile)
 
 if __name__=='__main__':
-    # dump_annotation_file(True)
-    # dump_annotation_file(False)
-    prepare_category_dict(root_path="", is_training=True)
+    dump_annotation_file(True)
+    dump_annotation_file(False)
+    # prepare_category_dict(root_path="", is_training=True)
 
