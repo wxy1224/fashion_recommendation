@@ -98,7 +98,7 @@ def dump_annotation_file(IS_TRAINING=True):
 
     i = 0
     category_map = {}
-    category_set = Set()
+    category_set = set()
     for line in content:
         if i > subsample_limit:
             break
