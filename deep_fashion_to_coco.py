@@ -45,7 +45,7 @@ def get_synthetic_categories():
 
 def get_categories(num_categories=5):
     # complete_categories = []
-    for i in range(num_categories+1):
+    for i in range(1,num_categories+1):
         dic = {
             'id': i,
             'name': '{}'.format(i),
