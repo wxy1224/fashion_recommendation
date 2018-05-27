@@ -44,14 +44,14 @@ def get_synthetic_categories():
     return categories
 
 def get_categories(num_categories=5):
-    # complete_categories = []
+    complete_categories = []
     for i in range(1,num_categories+1):
         dic = {
             'id': i,
             'name': '{}'.format(i),
             'supercategory': 'fashion'
         }
-        # complete_categories.append(dic)
+        complete_categories.append(dic)
     return complete_categories
 
 def dump_annotation_file(IS_TRAINING=True):
