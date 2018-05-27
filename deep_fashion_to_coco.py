@@ -98,6 +98,7 @@ def dump_annotation_file(IS_TRAINING=True):
 
     i = 0
     category_map = {}
+    category_set = Set()
     for line in content:
         if i > subsample_limit:
             break
@@ -106,6 +107,7 @@ def dump_annotation_file(IS_TRAINING=True):
         image_path = docker_image + pair[0]
         category_id = int(pair[1])
         category_map[image_path]=category_id
+        category_set.add(category_id)
         img = Image.open(image_read_path)
         width, height = img.size
 
@@ -117,7 +119,7 @@ def dump_annotation_file(IS_TRAINING=True):
 
         else:
             continue
-
+    print("category set:", category_set)
     ann_index = 0
 
     for image_dic in images:
