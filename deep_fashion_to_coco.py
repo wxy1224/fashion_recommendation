@@ -43,12 +43,12 @@ def get_synthetic_categories():
         categories.append(dic)
     return categories
 
-def get_categories(categories):
-    complete_categories = []
-    for i in range(len(categories)):
+def get_categories(num_categories=5):
+    # complete_categories = []
+    for i in range(num_categories+1):
         dic = {
-            'id': categories[i],
-            'name': '{}'.format(categories[i]),
+            'id': i,
+            'name': '{}'.format(i),
             'supercategory': 'fashion'
         }
         complete_categories.append(dic)
@@ -133,7 +133,7 @@ def dump_annotation_file(IS_TRAINING=True):
     assert len(images) == len(categories)
     print(len(images))
 
-    data = {'images':images, 'annotations':anns, 'categories':get_categories(categories)}
+    data = {'images':images, 'annotations':anns, 'categories':get_categories()}
 
     with open(json_output_path, 'w') as outfile:
         json.dump(data, outfile)

@@ -188,13 +188,13 @@ class coco(imdb):
             'seg_areas': seg_areas}
 
   def _get_widths(self):
-    print("lib/datasets/coco get_widths", self.roidb[0])
+    # print("lib/datasets/coco get_widths", self.roidb[0])
     return [r['width'] for r in self.roidb]
 
   def append_flipped_images(self):
     num_images = self.num_images
     widths = self._get_widths()
-    print("lib/datasets/coco", widths)
+    print("num_images",num_images,"lib/datasets/coco", widths)
     for i in range(num_images):
       boxes = self.roidb[i]['boxes'].copy()
       oldx1 = boxes[:, 0].copy()
