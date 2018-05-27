@@ -48,7 +48,7 @@ def get_categories(categories):
     for i in range(len(categories)):
         dic = {
             'id': categories[i],
-            'name': '{}'.format(categories[i),
+            'name': '{}'.format(categories[i]),
             'supercategory': 'fashion'
         }
         complete_categories.append(dic)
