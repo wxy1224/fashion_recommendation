@@ -106,17 +106,18 @@ def dump_annotation_file(IS_TRAINING=True):
         pair = line.split()
         image_read_path = root_path + pair[0]
         image_path = docker_image + pair[0]
-        category_id = categorical_dict[pair[0]]
-        category_map[image_path]=category_id
+
+        
         
         img = Image.open(image_read_path)
         width, height = img.size
 
         if pair[0] in categorical_dict:
+            category_map[image_path]=categorical_dict[pair[0]]
             dic = {'file_name': pair[0], 'id': image_path, 'height': height, 'width': width}
             images.append(dic)
             i += 1
-            categories.append(categorical_dict[pair[0]])
+            # categories.append(categorical_dict[pair[0]])
             category_set.add(categorical_dict[pair[0]])
 
         else:
