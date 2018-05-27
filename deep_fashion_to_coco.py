@@ -6,7 +6,7 @@ import numpy as np
 
 
 
-def prepare_category_dict(is_training=True):
+def prepare_category_dict(root_path="", is_training=True):
     if is_training:
         training_csv_path = os.path.join(root_path, 'train_modified.csv')
     else:
@@ -77,7 +77,7 @@ def dump_annotation_file(IS_TRAINING=True):
     bbox_file_path = root_path+"Anno/list_bbox.txt"
     subsample_limit = 600000000
 
-    categorical_dict = prepare_category_dict(IS_TRAINING)
+    categorical_dict = prepare_category_dict(root_path, IS_TRAINING)
 
 
     with open(category_file_path, 'r') as f:
