@@ -3,7 +3,7 @@ import json
 import os
 import pandas as pd
 import numpy as np
-
+from random import shuffle
 
 
 def prepare_category_dict(root_path="", is_training=True):
@@ -76,7 +76,7 @@ def dump_annotation_file(IS_TRAINING=True):
     # json_output_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
     # json_output_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
     bbox_file_path = root_path+"Anno/list_bbox.txt"
-    subsample_limit =  600000000
+    subsample_limit = 100 #600000000
 
     categorical_dict = prepare_category_dict(root_path, IS_TRAINING)
 
@@ -84,6 +84,7 @@ def dump_annotation_file(IS_TRAINING=True):
     with open(category_file_path, 'r') as f:
         content = f.readlines()
         content = content[2:]
+    shuffle(content)
     bbox_map = {}
 
     with open(bbox_file_path, 'r') as f:
