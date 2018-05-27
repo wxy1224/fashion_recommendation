@@ -82,6 +82,7 @@ class coco(imdb):
 
   def _get_widths(self):
     anns = self._COCO.loadImgs(self._image_index)
+    print("_get_width with anns: ", anns)
     widths = [ann['width'] for ann in anns]
     return widths
 
