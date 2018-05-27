@@ -33,7 +33,7 @@ case ${DATASET} in
     TRAIN_IMDB="coco_2018_fashion_train"
     TEST_IMDB="coco_2018_fashion_test"
     STEPSIZE="[350000]"
-    ITERS=10
+    ITERS=110000
     ANCHORS="[4,8,16,32]"
     RATIOS="[0.5,1,2]"
     ;;
