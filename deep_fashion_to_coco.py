@@ -51,7 +51,7 @@ def get_categories(num_categories=5):
             'name': '{}'.format(i),
             'supercategory': 'fashion'
         }
-        complete_categories.append(dic)
+        # complete_categories.append(dic)
     return complete_categories
 
 def dump_annotation_file(IS_TRAINING=True):
