@@ -62,6 +62,7 @@ def dump_annotation_file(IS_TRAINING=True):
     # put all your fashion data here img/Anno needs to be here.
     # root_path = 'tf-faster-rcnn/data/'
     coco_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/'
+    # coco_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/tf-faster-rcnn/data/coco/annotations/'
     # root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
     # root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
     # docker_image = root_path #'/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
@@ -75,7 +76,7 @@ def dump_annotation_file(IS_TRAINING=True):
     # json_output_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
     # json_output_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
     bbox_file_path = root_path+"Anno/list_bbox.txt"
-    subsample_limit = 1000 #600000000
+    subsample_limit = 3 #600000000
 
     categorical_dict = prepare_category_dict(root_path, IS_TRAINING)
 
@@ -119,8 +120,6 @@ def dump_annotation_file(IS_TRAINING=True):
     ann_index = 0
 
     for image_dic in images:
-        if ann_index > subsample_limit:
-            break
         image_path = image_dic['id']
         bbox_coors = bbox_map[image_path]
         dic2 = {'segmentation': [], 'area': bbox_coors[2]*bbox_coors[3],
