@@ -305,7 +305,7 @@ class coco(imdb):
     with open(csv_file, 'w') as fid:
       writer = csv.writer(fid)
       for item in results:
-        writer.writerow(item)
+        writer.writerow([item])
 
   def evaluate_detections(self, all_boxes, output_dir):
     res_file = osp.join(output_dir, ('detections_' +
