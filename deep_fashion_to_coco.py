@@ -5,8 +5,6 @@ import pandas as pd
 import numpy as np
 
 
-IS_TRAINING = True
-SAVE_PATH = 'instances_fashion_train2018.json' if IS_TRAINING else 'instances_fashion_test2018.json'
 
 def prepare_category_dict(is_training=True):
     if is_training:
@@ -56,27 +54,30 @@ def get_categories(categories):
         complete_categories.append(dic)
     return complete_categories
 
-if __name__=='__main__':
+def dump_annotation_file(IS_TRAINING=True):
+    SAVE_PATH = 'instances_fashion_train2018.json' if IS_TRAINING else 'instances_fashion_test2018.json'
+
     images, anns, categories = [], [], []
     images_to_annos = {}
     # put all your fashion data here img/Anno needs to be here.
-    root_path = 'tf-faster-rcnn/data/'
+    # root_path = 'tf-faster-rcnn/data/'
+    coco_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/'
     # root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
     # root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
     # docker_image = root_path #'/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
     # root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
-    # root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
+    root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
     # docker_image = '/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
     # docker_image = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
     docker_image = root_path
     category_file_path = root_path+"Anno/list_category_img.txt"
-    json_output_path = os.path.join(root_path, 'instances_fashion_train_complete2018.json')
+    json_output_path = os.path.join(coco_path, SAVE_PATH)
     # json_output_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
     # json_output_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/instances_fashion_train2018.json'
     bbox_file_path = root_path+"Anno/list_bbox.txt"
     subsample_limit = 600000000
 
-    categorical_dict = prepare_category_dict()
+    categorical_dict = prepare_category_dict(IS_TRAINING)
 
 
     with open(category_file_path, 'r') as f:
@@ -137,3 +138,8 @@ if __name__=='__main__':
 
     with open(json_output_path, 'w') as outfile:
         json.dump(data, outfile)
+
+if __name__=='__main__':
+    dump_annotation_file(True)
+    dump_annotation_file(False)
+
