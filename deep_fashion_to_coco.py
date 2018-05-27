@@ -4,6 +4,10 @@ import os
 import pandas as pd
 import numpy as np
 
+
+IS_TRAINING = True
+SAVE_PATH = 'instances_fashion_train2018.json' if IS_TRAINING else 'instances_fashion_test2018.json'
+
 def prepare_category_dict(is_training=True):
     if is_training:
         training_csv_path = os.path.join(root_path, 'train_modified.csv')
