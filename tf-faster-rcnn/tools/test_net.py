@@ -37,7 +37,7 @@ def parse_args():
             action='store_true')
   parser.add_argument('--num_dets', dest='max_per_image',
             help='max number of detections per image',
-            default=3, type=int)
+            default=1, type=int)
   parser.add_argument('--tag', dest='tag',
                         help='tag of the model',
                         default='', type=str)
