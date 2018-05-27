@@ -136,7 +136,7 @@ def dump_annotation_file(IS_TRAINING=True):
 
 
     assert len(images) == len(anns)
-    assert len(images) == len(categories)
+    # assert len(images) == len(categories)
     print(len(images))
 
     data = {'images':images, 'annotations':anns, 'categories':get_categories()}
