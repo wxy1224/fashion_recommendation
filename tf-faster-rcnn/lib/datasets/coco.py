@@ -320,7 +320,7 @@ class coco(imdb):
     if self._image_set.find('test') == -1:
       self._do_detection_eval(res_file, output_dir)
     # Optionally cleanup results json file
-    if self.config['cleanup']:
+    if False and self.config['cleanup']:
       os.remove(res_file)
 
   def competition_mode(self, on):
