@@ -108,7 +108,7 @@ def dump_annotation_file(IS_TRAINING=True):
         image_path = docker_image + pair[0]
         category_id = int(pair[1])
         category_map[image_path]=category_id
-        category_set.add(category_id)
+        
         img = Image.open(image_read_path)
         width, height = img.size
 
@@ -117,6 +117,7 @@ def dump_annotation_file(IS_TRAINING=True):
             images.append(dic)
             i += 1
             categories.append(categorical_dict[pair[0]])
+            category_set.add(categorical_dict[pair[0]])
 
         else:
             continue
@@ -143,6 +144,7 @@ def dump_annotation_file(IS_TRAINING=True):
         json.dump(data, outfile)
 
 if __name__=='__main__':
-    dump_annotation_file(True)
-    dump_annotation_file(False)
+    # dump_annotation_file(True)
+    # dump_annotation_file(False)
+    prepare_category_dict(root_path="", is_training=True)
 
