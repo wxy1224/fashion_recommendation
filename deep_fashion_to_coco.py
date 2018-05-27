@@ -11,6 +11,7 @@ def prepare_category_dict(root_path="", is_training=True):
         training_csv_path = os.path.join(root_path, 'train_modified.csv')
     else:
         training_csv_path = os.path.join(root_path, 'vali_modified.csv')
+    print("reading csv file: ", training_csv_path)
     training_csv = pd.read_csv(training_csv_path, usecols=['image_path', 'category']).as_matrix()
 
     training_dict = {}
