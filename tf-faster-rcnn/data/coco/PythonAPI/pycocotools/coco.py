@@ -56,7 +56,6 @@ from . import mask as maskUtils
 import os
 from collections import defaultdict
 import sys
-import pickle
 PYTHON_VERSION = sys.version_info[0]
 if PYTHON_VERSION == 2:
     from urllib import urlretrieve
@@ -307,7 +306,7 @@ class COCO:
         print('Loading and preparing results...')
         tic = time.time()
         if type(resFile) == str or type(resFile) == unicode:
-            anns = pickle.load(open(resFile))
+            anns = json.load(open(resFile))
         elif type(resFile) == np.ndarray:
             anns = self.loadNumpyAnnotations(resFile)
         else:

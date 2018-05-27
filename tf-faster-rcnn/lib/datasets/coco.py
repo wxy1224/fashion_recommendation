@@ -121,8 +121,8 @@ class coco(imdb):
     gt_roidb = [self._load_coco_annotation(index)
                 for index in self._image_index]
 
-    with open(cache_file, 'wb') as fid:
-      pickle.dump(gt_roidb, fid, pickle.HIGHEST_PROTOCOL)
+    with open(cache_file, 'w+') as fid:
+      # pickle.dump(gt_roidb, fid, pickle.HIGHEST_PROTOCOL)
     print('wrote gt roidb to {}'.format(cache_file))
     return gt_roidb
 
@@ -310,8 +310,9 @@ class coco(imdb):
     #   for item in results:
     #     writer.writerow([item])
 
-    with open(res_file, "wb") as fid:
-      pickle.dump(results, fid, pickle.HIGHEST_PROTOCOL)
+    with open(res_file, "w+") as fid:
+      json.dump(results, fid)
+      # pickle.dump(results, fid, pickle.HIGHEST_PROTOCOL)
 
 
   def evaluate_detections(self, all_boxes, output_dir):
@@ -321,7 +322,7 @@ class coco(imdb):
                                      '_results'))
     if self.config['use_salt']:
       res_file += '_{}'.format(str(uuid.uuid4()))
-    res_file += '.pkl'
+    res_file += '.json'
     self._write_coco_results_file(all_boxes, res_file)
     # Only do evaluation on non-test sets
     if self._image_set.find('test') == -1:
