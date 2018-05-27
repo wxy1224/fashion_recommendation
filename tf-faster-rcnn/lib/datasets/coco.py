@@ -299,9 +299,10 @@ class coco(imdb):
       coco_cat_id = self._class_to_coco_cat_id[cls]
       results.extend(self._coco_results_one_category(all_boxes[cls_ind],
                                                      coco_cat_id))
-    print('Writing results json to {}'.format(res_file))
+    # print('Writing results json to {}'.format(res_file))
 #     print(results)
     csv_file = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/output/vgg16/coco_2018_fashion_test/default/vgg16_faster_rcnn_iter_10/result.csv'
+    print('Writing results csv to {}'.format(csv_file))
     with open(csv_file, 'w') as fid:
       writer = csv.writer(fid)
       for item in results:
