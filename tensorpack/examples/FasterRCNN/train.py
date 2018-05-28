@@ -48,10 +48,10 @@ import config
 
 
 def get_batch_factor():
-    return 1
-    # nr_gpu = get_nr_gpu()
-    # assert nr_gpu in [1, 2, 4, 8], nr_gpu
-    # return 8 // nr_gpu
+    # return 1
+    nr_gpu = get_nr_gpu()
+    assert nr_gpu in [1, 2, 4, 8], nr_gpu
+    return 8 // nr_gpu
 
 
 def get_model_output_names():
