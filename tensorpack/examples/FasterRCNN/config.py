@@ -8,7 +8,7 @@ MODE_MASK = True
 MODE_FPN = False
 
 # dataset -----------------------
-BASEDIR = '/path/to/your/COCO/DIR'
+BASEDIR = '/Users/feiliu/Desktop/CS231N/final_project/Final_ProJect_Repo/tf-faster-rcnn/data/coco/'
 TRAIN_DATASET = ['train2014', 'valminusminival2014']   # i.e., trainval35k
 VAL_DATASET = 'minival2014'   # For now, only support evaluation on single dataset
 NUM_CLASS = 81    # 1 background + 80 categories
