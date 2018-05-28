@@ -8,7 +8,7 @@ MODE_MASK = True
 MODE_FPN = False
 
 # dataset -----------------------
-BASEDIR = '/Users/feiliu/Desktop/CS231N/final_project/Final_ProJect_Repo/tf-faster-rcnn/data/coco/'
+BASEDIR = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/deep_fashion_data/'
 TRAIN_DATASET = ['cs231_train_2018', 'cs231_test_2018']   # i.e., trainval35k
 VAL_DATASET = 'cs231_test_2018'   # For now, only support evaluation on single dataset
 NUM_CLASS = 6    # 1 background + 80 categories

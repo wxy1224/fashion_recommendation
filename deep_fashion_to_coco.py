@@ -58,20 +58,21 @@ def get_categories(num_categories=5):
 def dump_annotation_file(IS_TRAINING=True):
     # SAVE_PATH = 'instances_fashion_train2018.json' if IS_TRAINING else 'instances_fashion_test2018.json'
 
-    SAVE_PATH = 'cs231_train_2018/annotations/instances_cs231_train_2018.json' if IS_TRAINING else 'cs231_test_2018/annotations/instances_cs231_test_2018.json'
+    SAVE_PATH = 'annotations/instances_cs231_train_2018.json' if IS_TRAINING else 'annotations/instances_cs231_test_2018.json'
 
     images, anns, categories = [], [], []
     images_to_annos = {}
     # put all your fashion data here img/Anno needs to be here.
     # root_path = 'tf-faster-rcnn/data/'
     # coco_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/coco/annotations/'
-    # coco_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/tf-faster-rcnn/data/coco/annotations/'
-    coco_path = '/Users/feiliu/Desktop/CS231N/final_project/Final_ProJect_Repo/tensorpack/examples/data/coco/'
+    # coco_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/tensorpack/examples/data/coco/'
+    coco_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/deep_fashion_data/'
+    # coco_path = '/Users/feiliu/Desktop/CS231N/final_project/fashion_recommendation/tensorpack/examples/data/coco/'
     # root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
     # root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
     # docker_image = root_path #'/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
-    # root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/deep_fashion_data/'
-    root_path = '/Users/feiliu/Desktop/CS231N/final_project/Final_ProJect_Repo/deep_fashion_data/'
+    root_path = '/home/feiliu/Desktop/cs231N_Spring_2018/final_project/fashion_recommendation/deep_fashion_data/'
+    # root_path = '/Users/feiliu/Desktop/CS231N/final_project/fashion_recommendation/deep_fashion_data/'
     # root_path = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
     # docker_image = '/cs231_project/tf-faster-rcnn/data/deep_fashion_data/'
     # docker_image = '/afs/cs.stanford.edu/u/xw1/fashion_recommendation/tf-faster-rcnn/data/fashion/'
