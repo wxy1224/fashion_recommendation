@@ -9,10 +9,10 @@ MODE_FPN = False
 
 # dataset -----------------------
 BASEDIR = '/Users/feiliu/Desktop/CS231N/final_project/Final_ProJect_Repo/tf-faster-rcnn/data/coco/'
-TRAIN_DATASET = ['train2014', 'valminusminival2014']   # i.e., trainval35k
-VAL_DATASET = 'minival2014'   # For now, only support evaluation on single dataset
-NUM_CLASS = 81    # 1 background + 80 categories
-CLASS_NAMES = []  # NUM_CLASS strings. Needs to be populated later by data loader
+TRAIN_DATASET = ['cs231_train_2018', 'cs231_test_2018']   # i.e., trainval35k
+VAL_DATASET = 'cs231_test_2018'   # For now, only support evaluation on single dataset
+NUM_CLASS = 6    # 1 background + 80 categories
+CLASS_NAMES = [str((i+1)) for i in range(NUM_CLASS)]  # NUM_CLASS strings. Needs to be populated later by data loader
 
 # basemodel ----------------------
 RESNET_NUM_BLOCK = [3, 4, 6, 3]     # for resnet50

@@ -23,6 +23,8 @@ config.NUM_CLASS = COCO_NUM_CATEGORY + 1
 
 class _COCOMeta(object):
     INSTANCE_TO_BASEDIR = {
+        'cs231_train_2018': 'cs231_train_2018',
+        'cs231_test_2018': 'cs231_test_2018',
         'train2014': 'train2014',
         'val2014': 'val2014',
         'valminusminival2014': 'val2014',
@@ -60,6 +62,7 @@ class COCODetection(object):
         self.name = name
         self._imgdir = os.path.realpath(os.path.join(
             basedir, COCOMeta.INSTANCE_TO_BASEDIR[name]))
+        print("name", name)
         assert os.path.isdir(self._imgdir), self._imgdir
         annotation_file = os.path.join(
             basedir, 'annotations/instances_{}.json'.format(name))
