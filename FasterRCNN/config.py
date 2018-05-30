@@ -8,10 +8,10 @@ MODE_MASK = True
 MODE_FPN = False
 
 # dataset -----------------------
-BASEDIR = '/path/to/your/COCO/DIR'
-TRAIN_DATASET = ['train2014', 'valminusminival2014']   # i.e., trainval35k
-VAL_DATASET = 'minival2014'   # For now, only support evaluation on single dataset
-NUM_CLASS = 81    # 1 background + 80 categories
+BASEDIR = '../deep_fashion_data'
+TRAIN_DATASET = ['cs231_train_2018', 'cs231_test_2018']   # i.e., trainval35k
+VAL_DATASET = 'cs231_test_2018'   # For now, only support evaluation on single dataset
+NUM_CLASS = 6    # 1 background + 80 categories
 CLASS_NAMES = []  # NUM_CLASS strings. Needs to be populated later by data loader
 
 # basemodel ----------------------
