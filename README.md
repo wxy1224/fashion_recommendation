@@ -1,7 +1,7 @@
 # fashion_recommendation
 CS231N Spring 2018 Final Project
 
-This repository contains the code used to train and test our models.
+This repository contains tensorflow implementation of our models to do fashion recognition and recommendation.
 
 The components of this repo include:
 - deep-shopping-baseline: contains the code of our baseline, a 5-layer CNN model
