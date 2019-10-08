@@ -1,5 +1,5 @@
 # fashion_recommendation
-CS231N Spring 2018 Final Project
+
 
 This repository contains tensorflow implementation of our models to do fashion recognition and recommendation.
 
